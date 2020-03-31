@@ -11,12 +11,12 @@ const getTipoasientoByid = async function(req, res, next) {
   }    
 
 const createTipoasiento = async function(req, res, next) {
-    const { idtipoasiento, nombretipo, precio } = req.body;
-    const response = await pool.query('INSERT INTO tipoasiento (idtipoasiento ,nombretipo, precio) VALUES ($1, $2, $3)', [idtipoasiento, nombretipo,precio]);
+    const { nombretipo, precio } = req.body;
+    const response = await pool.query('INSERT INTO tipoasiento (nombretipo, precio) VALUES ($1, $2)', [nombretipo,precio]);
     res.json({
         message: "correctly added",
         body: {
-            tipoasiento: {idtipoasiento, nombretipo, precio}
+            tipoasiento: { nombretipo, precio}
         }
     });
   }
@@ -27,9 +27,9 @@ const deleteTipoasiento = async function(req, res, next) {
   }
 
 const updateTipoasiento = async function(req, res, next) {
-    const { idtipoasiento, nombretipo, precio } = req.body;
+    const { nombretipo, precio } = req.body;
     const id = req.params.id;
-    const response = await pool.query('UPDATE tipoasiento SET idtipoasiento = $1, nombretipo = $2, precio = $3 where idtipoasiento = $4', [idtipoasiento, nombretipo, precio, id]);
+    const response = await pool.query('UPDATE tipoasiento SET nombretipo = $1, precio = $2 where idtipoasiento = $3', [ nombretipo, precio, id]);
     res.json("updated sucessfully" );
   }
 
