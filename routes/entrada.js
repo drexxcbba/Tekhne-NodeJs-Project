@@ -7,6 +7,6 @@ const { getEntrada, createEntrada, getEntradaByid
 router.get('/',getEntrada);
 router.post('/',createEntrada);
 router.get('/:id', getEntradaByid);
-router.delete('./:id', deleteEntrada);
-router.put('./:id', updateEntrada);
+router.delete('/:id', deleteEntrada);
+router.put('/:id', updateEntrada);
 module.exports = router;
